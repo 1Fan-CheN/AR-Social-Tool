@@ -51,7 +51,7 @@ def create_user():
         else:
             err_msg = 'username or passwd is empty!'
             code = ReturnCode.EmptyNameOrPwd.value
-            logger.error(err_msg + 'data: %s', str(request.json))
+            logger.info(err_msg + 'data: %s', str(request.json))
         return BaseRsp.err_rsp(code, err_msg)
     else:
         code = ReturnCode.GETMethodError.value
@@ -95,7 +95,7 @@ def update_username():
                 code = ReturnCode.UpdateUsernameError.value
         else:
             err_msg = 'old username or new username is empty!'
-            logger.error(err_msg + 'data: %s', str(request.json))
+            logger.info(err_msg + 'data: %s', str(request.json))
             code = ReturnCode.EmptyOldnameOrNewname.value
         return BaseRsp.err_rsp(code, err_msg)
     else:
@@ -135,7 +135,7 @@ def update_gender():
                 code = ReturnCode.UpdateGenderError.value
         else:
             err_msg = 'New gender or username is empty!'
-            logger.error(err_msg + 'data: %s', str(request.json))
+            logger.info(err_msg + 'data: %s', str(request.json))
             code = ReturnCode.EmptyNewGenderOrUsername.value
         return BaseRsp.err_rsp(code, err_msg)
     else:
@@ -191,7 +191,7 @@ def update_passwd():
                 code = ReturnCode.UpdatePasswdError.value
         else:
             err_msg = 'Passwd or username is empty!'
-            logger.error(err_msg + 'data: %s', str(request.json))
+            logger.info(err_msg + 'data: %s', str(request.json))
             code = ReturnCode.EmptyData.value
         return BaseRsp.err_rsp(code, err_msg)
     else:
@@ -222,7 +222,7 @@ def user_login():
             return BaseRsp.err_rsp(code, err_msg)
         else:
             err_msg = 'Passwd or username is empty!'
-            logger.error(err_msg + 'data: %s', str(request.json))
+            logger.info(err_msg + 'data: %s', str(request.json))
             code = ReturnCode.EmptyUsernameOrPwd.value
         return BaseRsp.err_rsp(code, err_msg)
     else:
