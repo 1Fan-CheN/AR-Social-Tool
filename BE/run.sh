@@ -1,0 +1,1 @@
+python /home/cyf/AR-Social-Tool/BE/run.py

@@ -20,8 +20,5 @@ def create_app(env):
     models.init_app(app, env)
     routes.init_app(app)
     db.init_app(app)
-    from .models.greetings import Greeting
-    from .models.user import User
-    db.create_all()
-    db.session.commit()
+    db.create_all(app=app)
     return app

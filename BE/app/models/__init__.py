@@ -25,13 +25,14 @@ class DBConfig(object):
     SQLALCHEMY_DATABASE_URI = DB_URI
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
 
 class TestDBConfig(object):
     HOST = '127.0.0.1'
     PORT = '3306'
     DATABASE = 'argreeting'
-    USERNAME = 'root'
+    USERNAME = 'durham'
     PASSWORD = 'tmp1123_'
 
     DB_URI = "mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8".format(username=USERNAME,password=PASSWORD, host=HOST,port=PORT, db=DATABASE)
@@ -39,6 +40,7 @@ class TestDBConfig(object):
     SQLALCHEMY_DATABASE_URI = DB_URI
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
 def init_app(app, env):
     if env == 'test':

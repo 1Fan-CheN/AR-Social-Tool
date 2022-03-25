@@ -16,6 +16,6 @@ class Greeting(db.Model):
     uid = db.Column(db.Integer())
     username = db.Column(db.String(64), unique=False) 
     animationID = db.Column(db.Integer())
-    postcode = db.Column(db.String())
+    postcode = db.Column(db.String(64))
 
     __table_name__ = 'greeting'

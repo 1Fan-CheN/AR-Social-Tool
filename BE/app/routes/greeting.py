@@ -7,7 +7,7 @@ Description  :
 '''
 
 from flask import Blueprint, request
-from app.models.user import User
+from app.models.greetings import Greeting
 from app import logger
 from app import db
 from common.basersp import BaseRsp

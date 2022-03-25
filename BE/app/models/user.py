@@ -12,7 +12,8 @@ from app import db
 
 class User(db.Model):
     uid = db.Column(db.Integer(), primary_key=True, unique=True, nullable=False)
-    username = db.Column(db.String(64), unique=False) 
+    username = db.Column(db.String(64), unique=True) 
+    passwd = db.Column(db.String(128))
     gender = db.Column(db.SmallInteger())
     avator = db.Column(db.String(128), nullable=True) 
 
