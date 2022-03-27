@@ -60,6 +60,12 @@ class ReturnCode(ChoiceBase, enum.Enum):
     LoginError = 205
     PwdIncorrect = 2051
     EmptyUsernameOrPwd = 2052
+    # Greeting Error
+    # Get Greeting List Error
+    GetListError = 301
+    EmptyPostcode = 3011
+    # Create new greeting Error
+    SendGreetingError = 302
 
 
     __choices__ = (

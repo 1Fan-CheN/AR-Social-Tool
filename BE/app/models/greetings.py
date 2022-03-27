@@ -7,6 +7,7 @@ Description  :
 '''
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, DateTime, Integer, String
 from app import db
 
 
@@ -14,8 +15,8 @@ class Greeting(db.Model):
     id = db.Column(db.Integer(), primary_key=True, unique=True, nullable=False)
     messageID = db.Column(db.Integer())
     uid = db.Column(db.Integer())
-    username = db.Column(db.String(64), unique=False) 
     animationID = db.Column(db.Integer())
     postcode = db.Column(db.String(64))
+    create_time = db.Column(db.DateTime())
 
     __table_name__ = 'greeting'

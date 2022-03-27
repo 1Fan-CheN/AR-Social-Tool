@@ -230,5 +230,35 @@ def user_login():
         return BaseRsp.err_rsp(code, request.method)
 
 
+@users.route('/user/info', methods=["get", "post"], endpoint='info')
+def user_login():
+    logger.info('Get user info request: %s' % str(request.json))
+    if request.method == 'POST':
+        uid = request.json.get('uid', -1)
+        if uid != '':
+            try:
+                user = db.session.query(User).filter(User.uid==uid).first()
+                result = {}
+                result['username'] = user.username
+                result['gender'] = user.gender
+                result['avator'] = user.avator
+                return BaseRsp.success_rsp(result)
+            except Exception as e:
+                err_msg = str(e)
+                logger.error('Get user info wrong! error: %s' % str(e))
+            except:
+                logger.error('Get user info wrong with unexcepted error!')
+                err_msg = 'unexcepted error'
+            code = ReturnCode.LoginError.value
+            return BaseRsp.err_rsp(code, err_msg)
+        else:
+            err_msg = 'Uid is empty!'
+            logger.info(err_msg + 'data: %s', str(request.json))
+            code = ReturnCode.EmptyUsernameOrPwd.value
+        return BaseRsp.err_rsp(code, err_msg)
+    else:
+        code = ReturnCode.GETMethodError.value
+        return BaseRsp.err_rsp(code, request.method)
+
 def username_exist(username):
     return False if db.session.query(User).filter(User.username==username).first() is None else True
