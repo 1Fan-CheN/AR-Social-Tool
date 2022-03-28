@@ -2,7 +2,7 @@
 '''
 Author       : Yifan Chen
 Date         : 2022-01-26 19:39:22
-LastEditTime : 2022-01-27 03:23:43
+LastEditTime : 2022-03-28 23:05:22
 Description  : 
 '''
 import datetime
@@ -111,11 +111,3 @@ def send():
     else:
         code = ReturnCode.GETMethodError.value
         return BaseRsp.err_rsp(code, request.method)
-
-@greetings.route('/user/update_gender', endpoint='update_gender')
-def update_gender():
-    pass
-
-@greetings.route('/user/update_avatar', endpoint='update_avatar')
-def update_avatar():
-    pass
