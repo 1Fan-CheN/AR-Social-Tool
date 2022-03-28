@@ -20,7 +20,7 @@ def create_user():
         try:
             username = request.json.get('username', '')
             gender = request.json.get('gender', 2)
-            avator = request.json.get('avator', '')
+            avatar = request.json.get('avatar', '')
             passwd = request.json.get('passwd', '')
         except:
             err_msg = "Get request data error"
@@ -34,7 +34,7 @@ def create_user():
                     code = ReturnCode.UserNameExist.value
                     logger.info('Create user failed, username exists, username: %s', username)
                     return BaseRsp.err_rsp(code, err_msg)
-                new_user = User(username=username, gender=gender, avator=avator, passwd=passwd)
+                new_user = User(username=username, gender=gender, avatar=avatar, passwd=passwd)
                 db.session.add(new_user)
                 db.session.flush()
                 uid = new_user.uid
@@ -142,8 +142,8 @@ def update_gender():
         code = ReturnCode.GETMethodError.value
         return BaseRsp.err_rsp(code, request.method)
 
-@users.route('/user/update_avator', methods=["get", "post"], endpoint='update_avator')
-def update_avator():
+@users.route('/user/update_avatar', methods=["get", "post"], endpoint='update_avatar')
+def update_avatar():
     logger.info('Get update username request: %s' % str(request.json))
     if request.method == 'POST':
         pass
@@ -241,7 +241,7 @@ def user_login():
                 result = {}
                 result['username'] = user.username
                 result['gender'] = user.gender
-                result['avator'] = user.avator
+                result['avatar'] = user.avatar
                 return BaseRsp.success_rsp(result)
             except Exception as e:
                 err_msg = str(e)

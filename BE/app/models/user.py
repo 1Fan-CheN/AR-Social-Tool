@@ -16,6 +16,6 @@ class User(db.Model):
     username = db.Column(db.String(64), unique=True) 
     passwd = db.Column(db.String(128))
     gender = db.Column(db.SmallInteger())
-    avator = db.Column(db.String(128), nullable=True) 
+    avatar = db.Column(db.String(128), nullable=True) 
 
     __table_name__ = 'user'

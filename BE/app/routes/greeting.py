@@ -44,7 +44,7 @@ def get_greeting_list():
                     uid = greeting.uid
                     user_info = db.session.query(User).filter(User.uid==uid).first()
                     greeting_json['username'] = user_info.username
-                    greeting_json['avator'] = user_info.avator
+                    greeting_json['avatar'] = user_info.avatar
                     greeting_json['gender'] = user_info.gender
                     result.append(greeting_json)
                 return BaseRsp.success_rsp(result)
@@ -116,6 +116,6 @@ def send():
 def update_gender():
     pass
 
-@greetings.route('/user/update_avator', endpoint='update_avator')
-def update_avator():
+@greetings.route('/user/update_avatar', endpoint='update_avatar')
+def update_avatar():
     pass
