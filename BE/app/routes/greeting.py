@@ -43,6 +43,8 @@ def get_greeting_list():
                     greeting_json['create_time'] = greeting.create_time
                     uid = greeting.uid
                     user_info = db.session.query(User).filter(User.uid==uid).first()
+                    if user_info is None:
+                        continue
                     greeting_json['username'] = user_info.username
                     greeting_json['avatar'] = user_info.avatar
                     greeting_json['gender'] = user_info.gender

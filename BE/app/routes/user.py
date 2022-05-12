@@ -206,12 +206,15 @@ def user_login():
         passwd = request.json.get('passwd', '')
         if username != '' and passwd != '':
             try:
-                user = db.session.query(User).filter(User.username==username).first()
-                if user.passwd == passwd:
-                    return BaseRsp.success_rsp({})
-                code = ReturnCode.PwdIncorrect.value
-                err_msg = 'User password incorrect'
-                return BaseRsp.err_rsp(code, err_msg) 
+                if username_exist(username):
+                    user = db.session.query(User).filter(User.username==username).first()
+                    if user.passwd == passwd:
+                        return BaseRsp.success_rsp({})
+                    code = ReturnCode.PwdIncorrect.value
+                    err_msg = 'User password incorrect'
+                    return BaseRsp.err_rsp(code, err_msg) 
+                else:
+                    err_msg = 'username not exists'
             except Exception as e:
                 err_msg = str(e)
                 logger.error('Login wrong! error: %s' % str(e))
@@ -238,11 +241,14 @@ def user_login():
         if uid != '':
             try:
                 user = db.session.query(User).filter(User.uid==uid).first()
-                result = {}
-                result['username'] = user.username
-                result['gender'] = user.gender
-                result['avatar'] = user.avatar
-                return BaseRsp.success_rsp(result)
+                if user is not None:
+                    result = {}
+                    result['username'] = user.username
+                    result['gender'] = user.gender
+                    result['avatar'] = user.avatar
+                    return BaseRsp.success_rsp(result)
+                else:
+                    err_msg = 'user not exists'
             except Exception as e:
                 err_msg = str(e)
                 logger.error('Get user info wrong! error: %s' % str(e))
@@ -262,3 +268,6 @@ def user_login():
 
 def username_exist(username):
     return False if db.session.query(User).filter(User.username==username).first() is None else True
+
+def uid_exist(uid):
+    return False if db.session.query(User).filter(User.uid==uid).first() is None else True
