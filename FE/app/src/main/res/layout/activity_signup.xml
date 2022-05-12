@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.argreeting.activity.signup.SignupViewModel" />
+        <variable
+            name="activityProxy"
+            type="com.example.argreeting.activity.signup.SignupActivity" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.signup.SignupActivity">
+
+        <ImageView
+            android:id="@+id/imgSignupAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <EditText
+            android:id="@+id/edtSignupUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="username"
+            android:text="@={viewModel.signupUser.signupUsername}"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSignupAcc"
+            app:layout_constraintStart_toEndOf="@+id/imgSignupAcc"
+            app:layout_constraintTop_toTopOf="@+id/imgSignupAcc" />
+
+        <EditText
+            android:id="@+id/edtSignupPass1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="enter your password"
+            android:text="@={viewModel.signupUser.signupPassword}"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSignupPass1"
+            app:layout_constraintStart_toEndOf="@+id/imgSignupPass1"
+            app:layout_constraintTop_toTopOf="@+id/imgSignupPass1" />
+
+        <EditText
+            android:id="@+id/edtSignupPass2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="re-enter your password"
+            android:text="@={viewModel.signupUser.signupPassword2}"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSignupPass2"
+            app:layout_constraintStart_toEndOf="@+id/imgSignupPass2"
+            app:layout_constraintTop_toTopOf="@+id/imgSignupPass2" />
+
+        <Button
+            android:id="@+id/btnSignupUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Upload Avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSignupAvatar"
+            app:layout_constraintStart_toEndOf="@+id/imgSignupAvatar"
+            app:layout_constraintTop_toTopOf="@+id/imgSignupAvatar" />
+
+        <Button
+            android:id="@+id/btnSignupRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="sign up"
+            android:onClick="@{() -> activityProxy.signup()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtSignupPass2" />
+
+        <ImageView
+            android:id="@+id/imgSignupAcc"
+            android:layout_width="27dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="@+id/imgSignupAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/imgSignupAvatar"
+            app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+        <ImageView
+            android:id="@+id/imgSignupPass1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="@+id/imgSignupAcc"
+            app:layout_constraintTop_toBottomOf="@+id/imgSignupAcc"
+            app:srcCompat="@drawable/ic_baseline_lock_24" />
+
+        <ImageView
+            android:id="@+id/imgSignupPass2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="@+id/imgSignupPass1"
+            app:layout_constraintTop_toBottomOf="@+id/imgSignupPass1"
+            app:srcCompat="@drawable/ic_baseline_lock_24" />
+
+        <TextView
+            android:id="@+id/txtSignupWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="@string/error_passwords_don_not_match"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btnSignupRegister"
+            app:layout_constraintEnd_toEndOf="@+id/btnSignupRegister"
+            app:layout_constraintStart_toStartOf="@+id/btnSignupRegister" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

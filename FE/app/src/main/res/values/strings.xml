@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">ARGreeting</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_messages">Messages</string>
+    <string name="btn_fragment_home_send">send a greeting</string>
+    <string name="dashboard_profile">Profile</string>
+    <string name="dashboard_logout">Log Out</string>
+    <string name="profile_enter_password">Enter your new password</string>
+    <string name="profile_renter_password">Re-enter your new password</string>
+    <string name="hint_postcode_send_greeting">Your Destination Postcode</string>
+    <string name="error_username_used">The username you provided has already been used</string>
+    <string name="error_passwords_don_not_match">The passwords you typed in do not match</string>
+    <string name="error_failed_to_upload">Failed to upload the image</string>
+    <string name="error_postcode_doesnt_exist">The postcode you provided doesn\'t exist</string>
+    <string-array name="messages_array">
+        <item>Congratulations!!!</item>
+        <item>Merry Christmas!</item>
+        <item>Happy Valentine\'s Day!</item>
+        <item>Happy Birthday!</item>
+        <item>Have a nice day!</item>
+        <item>Hope you all the best!</item>
+        <item>Happy New Year!</item>
+    </string-array>
+    <string-array name="animations_array">
+        <item>Hurray</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    <string-array name="emoji_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+</resources>

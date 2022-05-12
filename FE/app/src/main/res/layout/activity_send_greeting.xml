@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="activityProxy"
+            type="com.example.argreeting.activity.sendGreeting.SendGreetingActivity" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.sendGreeting.SendGreetingActivity">
+
+        <Spinner
+            android:id="@+id/spnSendContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="54dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSendMsg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.17" />
+
+        <Spinner
+            android:id="@+id/spnSendAnimation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="54dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSendAni"
+            app:layout_constraintStart_toStartOf="@+id/spnSendContent"
+            app:layout_constraintTop_toBottomOf="@+id/spnSendContent" />
+
+        <Spinner
+            android:id="@+id/spnSendEmoji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="54dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="24dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSendEmoji"
+            app:layout_constraintTop_toBottomOf="@+id/spnSendAnimation" />
+
+        <Button
+            android:id="@+id/btnSendPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="Preview"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSendSend"
+            app:layout_constraintEnd_toStartOf="@+id/btnSendSend"
+            app:layout_constraintTop_toTopOf="@+id/btnSendSend" />
+
+        <Button
+            android:id="@+id/btnSendSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="SEND!"
+            android:onClick="@{() -> activityProxy.sendOnclick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtSendPostcode" />
+
+        <ImageView
+            android:id="@+id/imgSendMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/spnSendContent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spnSendContent"
+            app:srcCompat="@drawable/ic_baseline_message_24" />
+
+        <ImageView
+            android:id="@+id/imgSendAni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/spnSendAnimation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spnSendAnimation"
+            app:srcCompat="@drawable/ic_baseline_camera_24" />
+
+        <ImageView
+            android:id="@+id/imgSendEmoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/spnSendEmoji"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spnSendEmoji"
+            app:srcCompat="@drawable/ic_baseline_emoji_emotions_24" />
+
+        <ImageView
+            android:id="@+id/imgSendPos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="21dp"
+            app:layout_constraintBottom_toBottomOf="@+id/edtSendPostcode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edtSendPostcode"
+            app:srcCompat="@drawable/ic_baseline_local_post_office_24" />
+
+        <EditText
+            android:id="@+id/edtSendPostcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="54dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:hint="@string/hint_postcode_send_greeting"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSendPos"
+            app:layout_constraintTop_toBottomOf="@+id/spnSendEmoji" />
+
+        <TextView
+            android:id="@+id/txtSendError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/error_postcode_doesnt_exist"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btnSendSend"
+            app:layout_constraintEnd_toEndOf="@+id/btnSendSend"
+            app:layout_constraintStart_toStartOf="@+id/btnSendPreview" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
