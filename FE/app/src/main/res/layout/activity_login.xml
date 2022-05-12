@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.argreeting.activity.login.LoginViewModel" />
+        <variable
+            name="activityProxy"
+            type="com.example.argreeting.activity.login.LoginActivity" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.login.LoginActivity">
+
+        <ImageView
+            android:id="@+id/imgLoginAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            tools:srcCompat="@tools:sample/avatars"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <EditText
+            android:id="@+id/edtLoginUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:hint="username"
+            android:text="@={viewModel.loginUser.loginUsername}"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/imgLoginAvatar"
+            app:layout_constraintStart_toStartOf="@+id/imgLoginAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/imgLoginAvatar" />
+
+        <EditText
+            android:id="@+id/edtLoginPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:hint="password"
+            android:text="@={viewModel.loginUser.loginPassword}"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="@+id/edtLoginUsername"
+            app:layout_constraintTop_toBottomOf="@+id/edtLoginUsername" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="login"
+            android:onClick="@{() -> activityProxy.userlogin()}"
+            app:layout_constraintBottom_toBottomOf="@+id/btnLoginRegister"
+            app:layout_constraintStart_toEndOf="@+id/btnLoginRegister"
+            app:layout_constraintTop_toTopOf="@+id/btnLoginRegister"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txtUsernameErr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username doesn't exist"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/edtLoginUsername"
+            app:layout_constraintStart_toStartOf="@+id/edtLoginUsername" />
+
+        <TextView
+            android:id="@+id/txtPasswordErr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The password is incorret"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/edtLoginPassword"
+            app:layout_constraintStart_toStartOf="@+id/edtLoginPassword" />
+
+        <Button
+            android:id="@+id/btnLoginRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="sign up"
+            android:onClick="@{() -> activityProxy.register()}"
+            app:layout_constraintEnd_toEndOf="@+id/edtLoginPassword"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="@+id/edtLoginPassword"
+            app:layout_constraintTop_toBottomOf="@+id/edtLoginPassword" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

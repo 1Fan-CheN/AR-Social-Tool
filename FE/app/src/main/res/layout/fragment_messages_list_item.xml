@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_margin="5dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:id="@+id/itemMsgParent"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/itemMsgAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/itemMsgSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/itemMsgAvatar"
+            android:text="hello world"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/itemMsgSender"-->
+<!--            android:layout_toEndOf="@id/itemMsgAvatar"-->
+<!--            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum dui eget mauris facilisis, sed mattis urna accumsan. "-->
+<!--            android:textStyle="normal"-->
+<!--            android:textSize="12sp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:id="@+id/itemMsgText" />-->
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
