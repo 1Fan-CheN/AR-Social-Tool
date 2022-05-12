@@ -20,7 +20,4 @@ public class HomeViewModel extends ViewModel {
         return username;
     }
 
-    public void buttonOnclickAction() {
-
-    }
 }
