@@ -59,7 +59,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.body().getCode() == 0) {
                         Log.e(TAG, "onResponse: success");
                         Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("username", user.getLoginUsername());
+                        startActivity(intent);
                     }
                     else {
                         Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();

@@ -9,17 +9,20 @@
         android:id="@+id/navigation_home"
         android:name="com.example.argreeting.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"  >
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.argreeting.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.argreeting.ui.messages.MessagesFragment"
         android:label="@string/title_messages"
-        tools:layout="@layout/fragment_messages" />
+        tools:layout="@layout/fragment_messages" >
+    </fragment>
 </navigation>

@@ -42,7 +42,7 @@ public class MessagesFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_messages, container, false);
 
-        messagesViewModel = new ViewModelProvider(this).get(MessagesViewModel.class);
+        messagesViewModel = new ViewModelProvider(getActivity()).get(MessagesViewModel.class);
 
         messagesRecViewAdapter = new MessagesRecViewAdapter();
 
