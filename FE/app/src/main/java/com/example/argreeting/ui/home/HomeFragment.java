@@ -43,7 +43,6 @@ public class HomeFragment extends Fragment {
         TextView usernameTextView = binding.txtUsername;
         mainViewModel.getUsername().observe(getViewLifecycleOwner(), usernameTextView::setText);
 
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
