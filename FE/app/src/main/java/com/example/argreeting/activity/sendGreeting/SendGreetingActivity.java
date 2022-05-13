@@ -55,7 +55,7 @@ public class SendGreetingActivity extends AppCompatActivity implements AdapterVi
         Spinner content = (Spinner) binding.spnSendContent;
         Spinner animation = (Spinner) binding.spnSendAnimation;
         Spinner emoji = (Spinner) binding.spnSendEmoji;
-        EditText postcode = (EditText) binding.edtSendPostcode;
+        this.postcode = (EditText) binding.edtSendPostcode;
 
         ArrayAdapter<CharSequence> messageAdapter = ArrayAdapter.createFromResource(this, R.array.messages_array, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         ArrayAdapter<CharSequence> animationAdapter = ArrayAdapter.createFromResource(this, R.array.animations_array, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
@@ -103,29 +103,35 @@ public class SendGreetingActivity extends AppCompatActivity implements AdapterVi
 
     public void sendOnclick() {
         RetrofitUtil networkUtil = new RetrofitUtil();
-        String postcode = this.postcode.getText().toString();
-        try {
-            Call<BaseResponse<String>> call = networkUtil.userSendGreeting(postcode, content, 2, animation);
-            call.enqueue(new Callback<BaseResponse<String>>() {
-                @Override
-                public void onResponse(Call<BaseResponse<String>> call, Response<BaseResponse<String>> response) {
-                    if (response.body().getCode() == 0) {
-                        Toast.makeText(SendGreetingActivity.this, "Send Successfully", Toast.LENGTH_SHORT).show();
+        String postcodeStr = this.postcode.getText().toString();
+        if (!postcodeStr.isEmpty()) {
+            try {
+                Call<BaseResponse<String>> call = networkUtil.userSendGreeting(postcodeStr, content, 2, animation);
+                call.enqueue(new Callback<BaseResponse<String>>() {
+                    @Override
+                    public void onResponse(Call<BaseResponse<String>> call, Response<BaseResponse<String>> response) {
+                        if (response.body().getCode() == 0) {
+                            Toast.makeText(SendGreetingActivity.this, "Send Successfully", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(SendGreetingActivity.this, "Failed to send", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else {
+
+                    @Override
+                    public void onFailure(Call<BaseResponse<String>> call, Throwable t) {
                         Toast.makeText(SendGreetingActivity.this, "Failed to send", Toast.LENGTH_SHORT).show();
                     }
-                }
-
-                @Override
-                public void onFailure(Call<BaseResponse<String>> call, Throwable t) {
-
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        startActivity(new Intent(SendGreetingActivity.this, MainActivity.class));
+        else {
+            Toast.makeText(SendGreetingActivity.this, "No postcode provided", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
