@@ -14,10 +14,12 @@
         tools:targetApi="m">
         <activity
             android:name=".activity.viewGreeting.ViewGreetingActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false"
             android:label="View Greeting"/>
         <activity
             android:name=".activity.sendGreeting.SendGreetingActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false"
             android:label="Send a Greeting" />
         <activity
@@ -26,6 +28,7 @@
             android:label="Sign Up" />
         <activity
             android:name=".activity.profile.ProfileActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false"
             android:label="Profile" />
         <activity
