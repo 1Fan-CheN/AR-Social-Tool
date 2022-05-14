@@ -18,12 +18,17 @@ import java.util.List;
 public class MessagesRecViewAdapter extends RecyclerView.Adapter<MessagesRecViewAdapter.ViewHolder> {
 
     private List<Message> messages;
+    private OnMessageSelectedListener onMessageSelectedListener;
+
+    public MessagesRecViewAdapter(OnMessageSelectedListener onMessageSelectedListener) {
+        this.onMessageSelectedListener = onMessageSelectedListener;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_messages_list_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view, onMessageSelectedListener);
         return holder;
     }
 
@@ -47,19 +52,31 @@ public class MessagesRecViewAdapter extends RecyclerView.Adapter<MessagesRecView
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private ImageView senderAvatar;
         private TextView senderName;
         private CardView parent;
+        private OnMessageSelectedListener onMessageSelectedListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        @Override
+        public void onClick(View view) {
+            this.onMessageSelectedListener.onMessageSelected(getAdapterPosition());
+        }
+
+        public ViewHolder(@NonNull View itemView, OnMessageSelectedListener onMessageSelectedListener) {
             super(itemView);
 
             senderAvatar = itemView.findViewById(R.id.itemMsgAvatar);
             senderName = itemView.findViewById(R.id.itemMsgSender);
             parent = itemView.findViewById(R.id.itemMsgParent);
+            this.onMessageSelectedListener = onMessageSelectedListener;
+            itemView.setOnClickListener(this);
 
         }
+    }
+
+    public interface OnMessageSelectedListener {
+        void onMessageSelected(int position);
     }
 }

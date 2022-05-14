@@ -22,53 +22,24 @@ import retrofit2.Response;
 
 public class MessagesViewModel extends ViewModel {
 
-//    private final MutableLiveData<List<Message>> messages;
-    private String postcode;
-    private int page;
-    private RetrofitUtil networkUtil;
+    private MutableLiveData<List<Message>> messages;
 
-    public MessagesViewModel() throws IOException {
-        this.postcode = "test_code";
-        this.page = 1;
-//        this.messages = new MutableLiveData<>();
-//        List<Message> messages = new ArrayList<>();
-//        networkUtil = new RetrofitUtil();
-//        Call<ResponseBody> raw = networkUtil.userFetchMessages(this.postcode, this.page);
-//        raw.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//
-//            }
-//        });
-//        if (response.getCode() == 0) {
-//            messages = response.getData();
-//        }
-//        this.messages.setValue(messages);
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
-//        messages.add(new Message(new User(1, "Eddy Zheng", "https://123123.com",1), 1, "TA21 8NT", 1, "hello world"));
+    public MessagesViewModel(){
+        this.messages = new MutableLiveData<>();
+        List<Message> messages = new ArrayList<>();
+        this.messages.setValue(messages);
     }
 
-//    public LiveData<List<Message>> getMessages() {
-//        return messages;
-//    }
+    public LiveData<List<Message>> getMessages() {
+        return messages;
+    }
 
+    public void setMessages(List<Message> messages) {
+        this.messages.postValue(messages);
+    }
+
+    public List<Message> getMessageList() {
+        List<Message> messageList = this.messages.getValue();
+        return messageList;
+    }
 }
